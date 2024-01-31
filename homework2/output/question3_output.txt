@@ -1,0 +1,16 @@
+		(1)
+VARIABLES	LABELS	Electricity (kwh)
+		
+sqft	Square feet	0.615***
+		(0.00678)
+retrofit	Treatment	-109.7***
+		(7.943)
+temp	Temperature	3.255*
+		(1.932)
+Constant	Constant	-83.60
+		(154.7)
+		
+Observations		1,000
+R-squared		0.919
+Robust standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		

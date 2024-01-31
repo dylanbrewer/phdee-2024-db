@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=blue,
+    citecolor=black,
+}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 2 solutions}
+\author{Economics 7103}
+\date{ }
+  
+\begin{document}
+  
+\maketitle
+
+\section{Python}
+\noindent 1. See table \ref{tab:btable}.  If randomization worked, the simple difference-in-means is an unbiased estimate of the treatment effect.
+\begin{table}[h]
+    \centering
+    \input{btable.tex}
+    \caption{Means by treatment and control group in the sample.  The p value is from a two-way $t$-test for equivalence of means.}
+    \label{tab:btable}
+\end{table}
+
+\noindent 2. See figure \ref{fig:treatmenthist}, which is non-parametric evidence that the program worked:
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.7]{treatmenthist.pdf}
+    \caption{Histogram of treated and control electricity consumption.}
+    \label{fig:treatmenthist}
+\end{figure}
+
+\noindent 3. Each method produces quite similar results that probably only differ in rounding error:
+\begin{table}[h]
+    \centering
+   \input{outputtable3.tex}
+    \caption{Regression coefficients from OLS by hand (a), simulated OLS (b), and using the Statsmodels package (c).}
+    \label{tab:outputtable3}
+\end{table}
+\section{Stata}
+
+\noindent 1. See table \ref{tab:btable_stata}
+
+\begin{table}[h]
+    \centering
+    \input{hw2/summarystats.tex}
+    \caption{Means by treatment group and control group in the sample.  The p-value is from a two-way \(t\)-test for equivalence of means}
+    \label{tab:btable_stata}
+\end{table}
+
+\noindent 2. See figure \ref{fig:scatter}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{hw2/question2_scatterplot.pdf}
+    \caption{Scatterplot of electricity consumption versus home size.}
+    \label{fig:scatter}
+\end{figure}
+
+\noindent 3. See table \ref{tab:question3}
+
+\begin{table}[]
+    \centering
+    \input{hw2/question3_output.tex}
+    \caption{Regression results with heteroskedasticity-robust standard errors.}
+    \label{tab:question3}
+\end{table}
+
+\end{document}
