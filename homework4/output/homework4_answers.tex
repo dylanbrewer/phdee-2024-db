@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 4 Answers}
+\author{Economics 7103}
+  
+\begin{document}
+  
+\maketitle
+
+\section{Python}
+
+\begin{enumerate}
+\item See figure \ref{fig:hw4_q1}.  Yes, there appear to be parallel trends in fish bycatch for the treatment and control group before January 2018.  It appears that the program caused an immediate and large decline in bycatch.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.7]{hw4_q1.pdf}
+    \caption{Plot showing mean firm bycatch in pounds for months in 2017 and 2018.  Treatment occurred in January 2018.}
+    \label{fig:hw4_q1}
+\end{figure}
+\item The estimate is -9,591, which implies that between December and January the average bycatch per firm in the treated group declined by 9,591 pounds relative to firms in the control group over the same period.
+\item Output displayed in table \ref{tab:hw4_output3}.  The result is equivalent to the result in 2 (as we would expect).  As we add more rich controls, the estimated treatment effect declines, and the estimate becomes more precise.
+\end{enumerate}
+
+\input{outputhw4.tex}
+
+
+
+\clearpage
+
+\section{Stata}
+\begin{enumerate}
+    \item  See table \ref{tab:hw4stata}.  Note the results from b are equivalent to a--the standard errors differ slightly.  There are issues with the standard errors for b in that the variance in the estimate of the firm mean values should be incorporated into the standard errors.  Most statistical packages take care of this automatically.
+\end{enumerate}
+
+\begin{table}[h]
+    \centering
+    \input{hw4output_stata.tex}
+    \caption{Caption}
+    \label{tab:hw4stata}
+\end{table}
+
+\end{document}
