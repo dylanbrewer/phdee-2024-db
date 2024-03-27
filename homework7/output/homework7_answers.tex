@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 7 Answers}
+\author{Economics 7103}
+\date{ }
+  
+\begin{document}
+  
+\maketitle
+
+\section{Python}
+
+\begin{enumerate}
+    \item This will be a sharp RD because crossing the length threshold guarantees treatment. 
+    \item See figure \ref{fig:hw7q2}.  It does appear that there is a jump at the cutoff.  It is hard to tell whether there is any manipulation around the cutoff, but it does not appear that there is.
+    \item See figure \ref{fig:hw7q3}.  The estimate of the effect of the policy on miles per gallon at the cutoff is the estimate of the treatment dummy.  The estimate implies that the policy reduces fuel efficiency by 8.43 miles per gallon at the cutoff.
+    \item See figure \ref{fig:hw7q4}.  The estimate implies that the policy reduces fuel efficiency by 8.05 miles per gallon at the cutoff.
+    \item See figure \ref{fig:hw7q5}.  The estimate implies that the policy reduces fuel efficiency by 7.44 miles per gallon at the cutoff.
+    \item I used the simple first-degree polynomial in the first-stage regression because the higher order polynomials did not introduce a significant degree of non-linearity to the graphs.  Table \ref{tab:hw7output6} displays the results, which imply that an additional mile per gallon of fuel efficiency results in a \$158.78 increase in the sale price of the vehicle at the cutoff, very similar to the results using different instruments in homework 6.  This instrument may not be valid because the policy is designed to increase the safety of the vehicle, which may increase the sales price through a separate channel (likely fails to satisfy the exclusion restriction).
+\end{enumerate}
+
+\begin{table}[ht]
+    \centering
+   \input{hw7output6}
+    \caption{Dependent variable is the vehicle sales price. Two-stage-least-squares estimates using the first-order polynomial regression discontinuity in the first stage as the excluded instruments.  95\% confidence intervals constructed using heteroskedasticity-robust standard errors.}
+    \label{tab:hw7output6}
+\end{table}
+
+\clearpage
+
+\begin{figure}[ht]
+\centering
+\includegraphics{hw7q2.pdf}
+\caption{Scatterplot of miles per gallon versus vehicle length relative to the cutoff.}
+\label{fig:hw7q2}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics{hw7q3.pdf}
+\caption{Regression discontinuity estimates of the effect of the policy on fuel efficiency using a first-order polynomial.}
+\label{fig:hw7q3}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics{hw7q4.pdf}
+\caption{Regression discontinuity estimates of the effect of the policy on fuel efficiency using a second-order polynomial.}
+\label{fig:hw7q4}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics{hw7q5.pdf}
+\caption{Regression discontinuity estimates of the effect of the policy on fuel efficiency using a fifth-order polynomial.}
+\label{fig:hw7q5}
+\end{figure}
+
+\clearpage
+
+\section{Stata}
+
+\begin{enumerate}
+    \item You could do this using the fuzzy option of rdrobust/rdplot, or you could do it by hand.  It turns out that each gives different results because of the bandwidth selection in rdrobust/rdplot.  
+    \begin{enumerate}
+    \item So, using rdplot/rdrobust I get a coefficient estimate of 135, and when doing the second-stage regression by hand I get a coefficient estimate of 158.
+    \item See figure \ref{fig:rdplot}
+    \end{enumerate}
+    \item Given that the safety technology could also increase the price, this is probably not a good instrument in practice...but in this simulated dataset it is a great instrument!
+\end{enumerate}
+
+\begin{figure}
+    \centering
+    \includegraphics{hw7/hw7_p2q1.pdf}
+    \caption{Plot of RD estimates using rdplot in Stata question 1b.}
+    \label{fig:rdplot}
+\end{figure}
+
+\end{document}
