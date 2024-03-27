@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 5}
+\author{Economics 7103}
+\date{ }
+  
+\begin{document}
+
+\maketitle
+
+\noindent You have access to imaginary vehicle sales data from 2017 (\textit{instrumentalvehicles.csv}).  You are interested in estimating the hedonic price of an additional mile per gallon as part of a larger analysis of willingness to pay for fuel efficiency.  In your data, you have the following variables:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|l}
+        Variable & Description \\ \hline
+         \textit{price} & Sales price of the vehicle in USD  \\
+         \textit{car} & Class of the vehicle. =1 if the vehicle is a sedan, =0 if the vehicle is an SUV \\
+         \textit{mpg} & Fuel efficiency in miles per gallon \\
+         \textit{weight} & Weight of the vehicle in pounds \\
+         \textit{height} & Height of the vehicle in inches \\
+         \textit{length} & Length of the vehicle in inches \\
+    \end{tabular}
+    \caption{Variable descriptions for homework 6.}
+    \label{tab:variables6}
+\end{table}
+
+\section{Python}
+
+\begin{enumerate}
+    \item Run the ordinary-least-squares regression of price on \textit{mpg}, the \textit{car} indicator variable, and a constant.  Report and interpret the coefficient on miles per gallon (do not construct a table).
+    \item What forms of endogeneity are you concerned about when estimating the coefficient on \textit{mpg}?
+    \item To correct for this endogeneity, you would like to use instrumental variables.  Specifically, you are interested in the system of equations:
+    \begin{align}
+        price_v &= \beta_0 + \beta_1 mpg_v + \beta_2 car_v + e_v \\
+        mpg_v &= \gamma_0 + \gamma_1 z_v +\gamma_2 car_v + u_v,
+    \end{align}
+    where $z_v$ is the value of the instrument for vehicle $v$ and $e_v$ and $u_v$ are error terms.  Report the estimated second-stage coefficients, standard errors or confidence intervals, and the first-stage $F$-statistic for the excluded instrument in the same table for the following procedures (just us a regular F-statistic for this exercise rather than the robust Montiel-Olea-Pflueger F-statistic):
+    \begin{enumerate} [label=(\alph*)]
+        \item Perform two-stage-least-squares estimation by hand using $weight$ as the excluded instrument.  (First regress $mpg$ on all of the instruments.  Save the fitted values from the first stage $\hat{mpg}$ and use the fitted values in place of the endogenous variable in the second stage price regression.)  
+        \item Perform two-stage-least-squares estimation by hand using $weight^2$ as the excluded instrument.
+        \item Perform two-stage-least-squares estimation by hand using $height$ as the excluded instrument.
+        \item In words, what are the different exclusion restrictions required for parts (a)-(c)?  Does this seem reasonable for these instruments?
+        \item Compare and contrast the estimated coefficient on $mpg$ from parts (a)-(c).  What explains the discrepancies?
+    \end{enumerate}
+    \item Calculate the IV estimate using GMM with $weight$ as the excluded instrument. (Look for the Linearmodels function \verb!IVGMM!).  Report the estimated second-stage coefficient and standard error or confidence interval for $mpg$  What factors account for the differences in the standard errors?
+\end{enumerate}
+
+\section{Stata}
+
+\begin{enumerate}
+    \item Use the \verb|ivregress liml| command to compute the limited information maximum likelihood estimate using weight as the excluded instrument.  Report your second-stage results in a nicely-formatted table using \verb|outreg2|.  Use heteroskedasticity-robust standard errors.
+    \item Use \verb|weakivtest| to estimate the Montiel-Olea-Pflueger effective F-statistic.  What is the 5\% critical value, the F-statistic, and conclusion?
+\end{enumerate}
+
+
+
+\end{document}

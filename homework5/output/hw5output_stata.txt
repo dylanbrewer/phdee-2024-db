@@ -1,0 +1,14 @@
+		(1)
+VARIABLES	LABELS	price
+		
+mpg	MPG	150.4**
+		(63.05)
+car	Sedan	-4,676***
+		(589.7)
+Constant	Constant	17,628***
+		(1,773)
+		
+Observations		1,000
+R-squared		0.104
+Robust standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		
