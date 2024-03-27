@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 8 Answers}
+\author{Economics 7103}
+\date{ }
+  
+\begin{document}
+  
+\maketitle
+
+\section{Stata}
+
+\begin{enumerate}
+    \item See below:
+    \begin{enumerate}
+        \item The coefficient estimate on \(treatment_t\) is -0.065 with a robust standard error of 0.00136.
+        \item The matching estimate of the treatment effect is -0.070 with a robust standard error of 0.0010.
+        \item There is no control group, so identification relies on the projection from the time series.  This would be a problem if, for example, 2020 consumption was going to be different than past years' consumption due to adoption of energy efficiency (or any other changes).  These are going to be correlated with the incidence of COVID.
+    \end{enumerate}
+    \item See below:
+    \begin{enumerate}
+        \item The new coefficient on treatment is 0.025 with a robust standard error of 0.0027.
+        \item By adding a year indicator, any differences between 2020 and previous years are captured (to the extent that we see those differences emerging before March).  We might believe this estimate somewhat more because it can control for changes in energy consumption from 2014-2019 to 2020 that occurred before the incidence of COVID-19.
+    \end{enumerate}
+    \item See below:
+    \begin{enumerate}
+        \item The new coefficient on treatment is -0.018 with a robust standard error of 0.0017.  This approach similarly attempts to account for other changes in 2020 that were not due to COVID-19.
+        \item We may not trust the standard error because it does not account for the estimation uncertainty introduced in the first stage.
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
